@@ -5,21 +5,26 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-    constructor(
-        @InjectRepository(User)
-        private readonly userRepository: Repository<User>,
-    ){}
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
 
-    async create(data: { user_name: string; user_email: string}) {
-        const user = this.userRepository.create(data);
-        return this.userRepository.save(user);
-    }
+  async create(data: { user_name: string; user_email: string }) {
+    const user = this.userRepository.create(data);
+    return this.userRepository.save(user);
+  }
 
-    async findAll() {
-        return this.userRepository.find();
-    }
+  async loginSignUp(data: { user_mobile_num: string }) {
+    const user = this.userRepository.create(data);
+    return this.userRepository.save(user);
+  }
 
-    async findOne(user_id_num: number) {
-        return this.userRepository.findOneBy({user_id_num});
-    }
+  async findAll() {
+    return this.userRepository.find();
+  }
+
+  async findOne(user_id_num: number) {
+    return this.userRepository.findOneBy({ user_id_num });
+  }
 }

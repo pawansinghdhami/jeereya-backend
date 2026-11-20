@@ -9,16 +9,21 @@ ParseIntPipe,
 
 import { UsersService } from './users.service';
 
-@Controller('users')
+@Controller('user')
 export class UsersController {
     
     constructor(
         private readonly userService: UsersService,
     ){}
 
-    @Post()
+    @Post('/update')
     create(@Body() body: { user_name: string, user_email: string}) {
         return this.userService.create(body);
+    }
+
+    @Post('/login')
+    loginSignUp(@Body() body: { user_mobile_num: string}){
+        return this.userService.loginSignUp(body);
     }
 
     @Get()
