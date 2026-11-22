@@ -27,6 +27,9 @@ export class User {
   @Column({ type: 'varchar', length: 16, unique: true })
   user_mobile_num!: string;
 
+  @Column({ type: 'varchar', length: 255, select: false })
+  user_password_hash!: string;
+
   @Column({ type: 'boolean', default: false })
   is_user_verified!: boolean;
 
